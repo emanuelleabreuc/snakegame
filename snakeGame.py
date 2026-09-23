@@ -29,10 +29,38 @@ for posicao in starting_positions:
     criar_segmento(posicao) 
 
 
+
+aim_x = PASSO #horizontal
+aim_y = 0 #vertical
+
+def ir_para_cima():
+    if aim_y != -PASSO: #impede que a cobra se mova para baixo se estiver indo para cima
+        global aim_x, aim_y #global avisa que essas variaveis tem que ser mudadas fora da funcao, e nao criadas cópias dentro da funcao
+        aim_x = 0
+        aim_y = PASSO
+
+def ir_para_baixo():
+    if aim_y != PASSO: #impede que a cobra se mova para cima se estiver indo para baixo
+        global aim_x, aim_y
+        aim_x = 0
+        aim_y = -PASSO
+
+def ir_para_esquerda():
+    if aim_x != PASSO:
+        global aim_x, aim_y
+        aim_x = -PASSO
+        aim_y = 0
+
+def ir_para_direita():
+    if aim_x != -PASSO:
+        global aim_x, aim_y
+        aim_x = PASSO
+        aim_y = 0
+
 ################## screen.exitonclick()
 
 
 
 
 
-    
+
