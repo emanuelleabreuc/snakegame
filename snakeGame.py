@@ -57,6 +57,12 @@ def ir_para_direita():
         aim_x = PASSO
         aim_y = 0
 
+screen.listen() #faz a tela obedecer os eventos do teclado
+screen.onkey(ir_para_cima, "Up")
+screen.onkey(ir_para_baixo, "Down")
+screen.onkey(ir_para_esquerda, "Left")
+screen.onkey(ir_para_direita, "Right")
+
 ################## screen.exitonclick()
 
 
