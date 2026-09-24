@@ -23,7 +23,7 @@ def criar_segmento(posicao):
     novo_segmento.goto(posicao) #posiciona o segmento na posicao especificada
     segments.append(novo_segmento) #adiciona o segmento na lista de segmentos
 
- ################# screen.update()
+
 
 for posicao in starting_positions:
     criar_segmento(posicao) 
@@ -63,8 +63,19 @@ screen.onkey(ir_para_baixo, "Down")
 screen.onkey(ir_para_esquerda, "Left")
 screen.onkey(ir_para_direita, "Right")
 
-################## screen.exitonclick()
 
+
+def mover():
+    novo_x = segments[0].xcor() + aim_x #segments[0] é a CABEÇA da cobra (o primeiro segmento da lista)
+    #.xcor() pega a posição X atual dela na tela
+    #somamos aim_x (do passo 1) pra calcular pra onde ela deve ir no eixo X
+    #ex: se está em x=100 e aim_x=20, novo_x vira 120 (andou 20px pra direita)
+    novo_y = segments[0].ycor() + aim_y 
+    segments[0].goto(novo_x, novo_y)   #move de fato a cabeça para a nova posição calculada
+    screen.update()
+    screen.ontimer(mover, 100) #isso agenda: "daqui a 100 milissegundos (0.1 segundo), chame a função
+mover()
+screen.exitonclick() #mantém a janela aberta até você clicar nela pra fechar
 
 
 
