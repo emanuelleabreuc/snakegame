@@ -34,26 +34,26 @@ aim_x = PASSO #horizontal
 aim_y = 0 #vertical
 
 def ir_para_cima():
+    global aim_x, aim_y
     if aim_y != -PASSO: #impede que a cobra se mova para baixo se estiver indo para cima
-        global aim_x, aim_y #global avisa que essas variaveis tem que ser mudadas fora da funcao, e nao criadas cópias dentro da funcao
         aim_x = 0
         aim_y = PASSO
 
 def ir_para_baixo():
+    global aim_x, aim_y
     if aim_y != PASSO: #impede que a cobra se mova para cima se estiver indo para baixo
-        global aim_x, aim_y
         aim_x = 0
         aim_y = -PASSO
 
 def ir_para_esquerda():
+    global aim_x, aim_y
     if aim_x != PASSO:
-        global aim_x, aim_y
         aim_x = -PASSO
         aim_y = 0
 
 def ir_para_direita():
+    global aim_x, aim_y
     if aim_x != -PASSO:
-        global aim_x, aim_y
         aim_x = PASSO
         aim_y = 0
 
@@ -74,6 +74,14 @@ def mover():
     novo_x = segments[0].xcor() + aim_x #calcula a nova posicao do primeiro segmento da cobra, somando a posicao atual com o valor de aim_x e aim_y
     novo_y = segments[0].ycor() + aim_y
     segments[0].goto(novo_x, novo_y) #faz o primeiro segmento da cobra ir para a nova posicao calculada
+ 
+
+ 
+
+    if abs(segments[0].xcor()) > LIMITE or abs(segments[0].ycor()) > LIMITE:
+        print("Game Over")
+        screen.update()
+        return
  
     screen.update()
     screen.ontimer(mover, 100) #faz a funcao mover ser chamada a cada 100 ms, criando um loop de animacao
