@@ -66,17 +66,17 @@ screen.onkey(ir_para_direita, "Right")
 
 
 def mover():
-    posicoes = [segmento.pos() for segmento in segments]
+    posicoes = [segmento.pos() for segmento in segments] #pra cada segmento da cobra, pega a posicao atual e armazena na lista posicoes
  
-    for i in range(len(segments) - 1, 0, -1):
-        segments[i].goto(posicoes[i - 1])
+    for i in range(len(segments) - 1, 0, -1): #percorre a lista de segmentos da cobra de tras pra frente, comecando do ultimo segmento ate o primeiro
+        segments[i].goto(posicoes[i - 1]) #faz o segmento atual ir para a posicao do segmento anterior, fazendo com que a cobra se mova
  
-    novo_x = segments[0].xcor() + aim_x
+    novo_x = segments[0].xcor() + aim_x #calcula a nova posicao do primeiro segmento da cobra, somando a posicao atual com o valor de aim_x e aim_y
     novo_y = segments[0].ycor() + aim_y
-    segments[0].goto(novo_x, novo_y)
+    segments[0].goto(novo_x, novo_y) #faz o primeiro segmento da cobra ir para a nova posicao calculada
  
     screen.update()
-    screen.ontimer(mover, 100)
+    screen.ontimer(mover, 100) #faz a funcao mover ser chamada a cada 100 ms, criando um loop de animacao
  
 mover()
  
