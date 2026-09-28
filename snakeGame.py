@@ -78,7 +78,7 @@ def mover():
 
  
 
-    if abs(segments[0].xcor()) > LIMITE or abs(segments[0].ycor()) > LIMITE:
+    if abs(segments[0].xcor()) > LIMITE or abs(segments[0].ycor()) > LIMITE: #verifica se o segmento x e y da cobra ultrapassou os limites da tela, se sim, imprime "Game Over" e encerra o jogo
         print("Game Over")
         screen.update()
         return
