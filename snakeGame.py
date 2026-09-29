@@ -106,7 +106,11 @@ reposicionar_comida()
 
 score = 0  # inicializa a pontuacao do jogador
 
+<<<<<<< HEAD
 def colisao(): 
+=======
+def colisao() 
+>>>>>>> 59f09e54cf25262a46a9613ce72f5c5348bdc47d
     if segments[0].distance(comida) < 15:  # verifica se a cobra colidiu com a comida
         reposicionar_comida()  # reposiciona a comida em uma nova posicao aleatoria
         criar_segmento(segments[-1].pos())  # cria um novo segmento da cobra na posicao do ultimo segmento
@@ -117,6 +121,7 @@ def colisao():
 screen.update()
 screen.ontimer(mover, 100)
 mover()  # inicia o movimento da cobra
+<<<<<<< HEAD
 
 screen.onkey(ir_para_cima, "w")
 screen.onkey(ir_para_baixo, "s")
@@ -126,3 +131,6 @@ screen.onkey(ir_para_direita, "d")
 
 
 screen.exitonclick()
+=======
+screen.exitonclick()
+>>>>>>> 59f09e54cf25262a46a9613ce72f5c5348bdc47d
