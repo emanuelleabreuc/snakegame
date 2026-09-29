@@ -8,7 +8,7 @@ screen.title("Snake Game")
 screen.tracer(0)  # desativa a animacao da tela
 
 PASSO = 20
-LIMITE = 200
+LIMITE = 280
 
 segments = []  # lista vazia para armazenar os segmentos da cobra
 starting_positions = [(0, 0), (-20, 0), (-40, 0)]  # posicoes em x e y para os segmentos da cobra (sao 3)
@@ -102,9 +102,27 @@ def reposicionar_comida():
     random_y = random.randint(-LIMITE + 20, LIMITE - 20)
     comida.goto(random_x, random_y)
 
-
 reposicionar_comida()
+
+score = 0  # inicializa a pontuacao do jogador
+
+def colisao(): 
+    if segments[0].distance(comida) < 15:  # verifica se a cobra colidiu com a comida
+        reposicionar_comida()  # reposiciona a comida em uma nova posicao aleatoria
+        criar_segmento(segments[-1].pos())  # cria um novo segmento da cobra na posicao do ultimo segmento
+        global score
+        score += 1  # incrementa a pontuacao do jogador
+        print(f"Score: {score}")
+
 screen.update()
 screen.ontimer(mover, 100)
+mover()  # inicia o movimento da cobra
+
+screen.onkey(ir_para_cima, "w")
+screen.onkey(ir_para_baixo, "s")
+screen.onkey(ir_para_esquerda, "a")
+screen.onkey(ir_para_direita, "d")
+
+
 
 screen.exitonclick()
